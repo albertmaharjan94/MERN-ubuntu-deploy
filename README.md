@@ -76,7 +76,7 @@ Clone your frontend and backend
 ```bash
 cd ~
 git clone <your repos>
-git clone https://github.com:albertmaharjan94/web-34-a.git
+git clone https://github.com/albertmaharjan94/web-34-a.git
 git clone https://github.com/albertmaharjan94/34-a-web-frontend.git
 ```
 
