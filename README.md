@@ -69,7 +69,9 @@ npm -v # Should print "10.9.2".
 ```
 
 ### PM2 (Express process manager)
+```bash
 npm i -g pm2@latest
+```
 
 Clone your frontend and backend 
 
