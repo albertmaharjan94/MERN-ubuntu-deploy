@@ -139,7 +139,7 @@ sudo nginx -t
 sudo systemctl restart nginx
 ```
 
-## Certbot
+## Certbot (Optional)
 ```bash
 sudo apt install -y snapd
 sudo systemctl enable snapd
@@ -149,4 +149,5 @@ sudo snap refresh core
 sudo systemctl start snapd
 sudo snap install --classic certbot
 sudo apt-get install -y python3-certbot-nginx
+sudo certbot --nginx
 ```
