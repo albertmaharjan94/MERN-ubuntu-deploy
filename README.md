@@ -80,6 +80,63 @@ git clone https://github.com/albertmaharjan94/web-34-a.git
 git clone https://github.com/albertmaharjan94/34-a-web-frontend.git
 ```
 
+Serve Express Backend
+```bash
+cd web-34-a
+npm i 
+pm2 start server.js
+```
+
+Build react app
+```bash
+cd ~
+cd 34-a-web-frontend
+npm i
+```
+Change .env as your domain
+Eg: yeti domain/api, can be pointed to domain if DNS and public IP both available
+http://docker22175-env-6790985.ktm.yetiappcloud.com/api
+
+
+```bash
+npm run build
+mkdir /var/www/html/myproject
+cp -r ./dist/ /var/www/html/myproject/
+```
+
+Change the nginx config with 
+```conf
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+
+    root /var/www/html/myproject/dist;
+
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name _;
+    location /api/ {
+        proxy_pass http://127.0.0.1:5050;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+    location / {
+        try_files $uri /index.html;
+    }
+}
+```
+
+Go back to terminal and restart nginx
+
+```
+sudo nginx -t
+sudo systemctl restart nginx
+```
+
 ## Certbot
 ```bash
 sudo apt install -y snapd
